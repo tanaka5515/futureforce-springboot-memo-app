@@ -29,11 +29,6 @@ public class MemoController {
 
     @Autowired
     private MemoRepository memoRepository;
-    
-    @ModelAttribute("priorityList")
-    public Priority[] priorityList() {
-    	return Priority.values();
-    }
 
     @GetMapping
     public String list(Model model) {
@@ -47,14 +42,15 @@ public class MemoController {
     @GetMapping("/new")
     public String showForm(Model model) {
         model.addAttribute("memo", new Memo());
-        //model.addAttribute("priorityList", Priority.values());
+        model.addAttribute("priorityList", Priority.values());
         return "memo-form";
     }
 
     @PostMapping("/create")
     public String create(@ModelAttribute @Valid Memo memo,
-            BindingResult result) {
+            BindingResult result,Model model) {
         if (result.hasErrors()) {
+        	model.addAttribute("priorityList", Priority.values());
             return "memo-form";
         }
 
