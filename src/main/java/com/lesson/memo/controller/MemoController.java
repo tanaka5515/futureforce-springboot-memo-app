@@ -36,10 +36,10 @@ public class MemoController {
         return "memo-list";
     }
     
-    @GetMapping("/seach")
+    @GetMapping("/search")
     public String list(@RequestParam(required = false)String keyword, Model model) {
     	List<Memo> memos;
-    	if (keyword == null) {
+    	if (keyword == null || keyword == "") {
     		memos = memoRepository.findAll();
     	} else {
     		memos = memoRepository.findByTitleContainingOrContentContaining(keyword, keyword);
