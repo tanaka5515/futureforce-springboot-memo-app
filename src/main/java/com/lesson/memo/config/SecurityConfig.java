@@ -1,8 +1,5 @@
 package com.lesson.memo.config;
 
-import javax.sql.DataSource;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,8 +13,6 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
 	
-	@Autowired
-	private DataSource dataSource;//データソースと接続方法をオブジェクト化する
 	
 	@Bean
 	public PasswordEncoder passwordEncoder() {
