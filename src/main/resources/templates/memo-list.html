@@ -23,7 +23,6 @@
 				<label>検索：</label>
 				<input type="text" name="keyword">
 				<button type="submit" class="btn">検索</button>
-				<a th:href="@{/memo}" class="btn">一覧へ戻る</a>
 				<p th:text="${emptyMessage}" class="error-message"></p>
 			</div>
 		</form>
@@ -53,6 +52,10 @@
             <p>メモがありません</p>
             <a th:href="@{/memo/new}" class="btn btn-primary">新しいメモを作成</a>
         </div>
+		
+		<form th:action="@{/logout}" method="post">
+		  <button type="submit">ログアウト</button>
+		</form>
     </div>
     <script th:src="@{/js/common.js}"></script>
 </body>
